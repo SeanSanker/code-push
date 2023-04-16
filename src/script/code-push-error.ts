@@ -6,7 +6,7 @@ export class CodePushError extends Error {
 }
 
 export class CodePushHttpError extends CodePushError {
-    constructor(message: string) {
+    constructor(message: string, public statusCode: number) {
         super(message);
         Object.setPrototypeOf(this, CodePushHttpError.prototype);
     }

@@ -109,7 +109,7 @@ export class AcquisitionManager {
                 } else {
                     errorMessage = `${response.statusCode}: ${response.body}`;
                 }
-                callback(new CodePushHttpError(errorMessage), /*remotePackage=*/ null);
+                callback(new CodePushHttpError(errorMessage, response.statusCode), /*remotePackage=*/ null);
                 return;
             }
             try {
@@ -197,7 +197,7 @@ export class AcquisitionManager {
                 }
 
                 if (response.statusCode !== 200) {
-                    callback(new CodePushHttpError(response.statusCode + ": " + response.body), /*not used*/ null);
+                    callback(new CodePushHttpError(response.statusCode + ": " + response.body, response.statusCode), /*not used*/ null);
                     return;
                 }
 
@@ -222,7 +222,7 @@ export class AcquisitionManager {
                 }
 
                 if (response.statusCode !== 200) {
-                    callback(new CodePushHttpError(response.statusCode + ": " + response.body), /*not used*/ null);
+                    callback(new CodePushHttpError(response.statusCode + ": " + response.body, response.statusCode), /*not used*/ null);
                     return;
                 }
 
